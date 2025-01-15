@@ -1,7 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router";
 import Home from "./components/Home";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import About from "./components/About"
 import {useEffect, useState} from "react";
 import axios from "axios";
 
@@ -28,14 +27,12 @@ const App = () => {
     
     
   return (
-    <div className='w-full max-w-[600px] mx-auto px-4 bg-zinc-200'>
+    <div className='w-full max-w-[600px] mx-auto bg-zinc-200'>
     <BrowserRouter>
-    <Navbar />
     <Routes>
-    <Route path="/" element={<Home onSearch={onSearch} data={data} loading={loading}/>} />
+    <Route path="/" element={<Home onSearch={onSearch} data={data} loading={loading} setError={setError} error={error}/>} />
+    <Route path="/about" element={<About/>}/>
     </Routes>
-    {error.trim() && <p>Word not found!</p>}
-    <Footer />
     </BrowserRouter>
     </div>
     )
